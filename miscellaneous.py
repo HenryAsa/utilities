@@ -68,3 +68,11 @@ def convert_java_to_python_conditional(java_conditional: str) -> str:
     python_conditional = f"({python_true_expr} if {python_condition} else {python_false_expr})"
 
     return python_conditional
+
+
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+install("tabulate")

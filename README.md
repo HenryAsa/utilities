@@ -1,2 +1,3 @@
-# utilities
-Commonly Used Utility Functions
+# `utilities`
+
+Commonly used utility functions
