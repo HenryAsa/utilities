@@ -73,6 +73,12 @@ def convert_java_to_python_conditional(java_conditional: str) -> str:
 import subprocess
 import sys
 
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+def install(package: str | list):
+    if isinstance(package, list):
+        for obj in package:
+            install(obj)
+
+    else:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
 install("tabulate")
