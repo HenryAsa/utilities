@@ -2,6 +2,7 @@
 import subprocess
 import sys
 
+
 def convert_java_to_python_conditional(java_conditional: str) -> str:
     """Converts a ``Java`` or ``C++`` or ``C`` style conditional
     ternary operator expression to a ``Python`` ternary operation
