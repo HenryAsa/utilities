@@ -77,7 +77,6 @@ def install(package: str | list):
     if isinstance(package, list):
         for obj in package:
             install(obj)
-
     else:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
