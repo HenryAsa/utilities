@@ -1,5 +1,6 @@
 
-
+import subprocess
+import sys
 
 def convert_java_to_python_conditional(java_conditional: str) -> str:
     """Converts a ``Java`` or ``C++`` or ``C`` style conditional
@@ -69,9 +70,6 @@ def convert_java_to_python_conditional(java_conditional: str) -> str:
 
     return python_conditional
 
-
-import subprocess
-import sys
 
 def install(package: str | list):
     if isinstance(package, list):
