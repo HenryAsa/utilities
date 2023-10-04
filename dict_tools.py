@@ -25,7 +25,6 @@ def recursively_sort_dicts(dictionary: dict) -> dict:
 
     Examples
     --------
-
     This is an example of a dictionary whose keys (when capitalized)
     are the same, but the dictionary is still stably/repeatably
     sorted using this function.
