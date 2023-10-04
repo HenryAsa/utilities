@@ -72,11 +72,25 @@ def convert_java_to_python_conditional(java_conditional: str) -> str:
     return python_conditional
 
 
-def install(package: str | list):
+def install_pip_packages(package: str | list):
+    """Function that installs Python pip packages (list of strings or
+    a single string) to Python
+
+    Parameters
+    ----------
+    package : str | list
+        The name of the package or packages to install
+
+    Examples
+    --------
+    Installing a single pip package
+    >>> install_pip_packages('tabulate')
+
+    Installing multiple pip packages
+    >>> install_pip_packages(['numpy', 'pandas', 'tabulate'])
+    """
     if isinstance(package, list):
         for obj in package:
-            install(obj)
+            install_pip_packages(obj)
     else:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install("tabulate")
