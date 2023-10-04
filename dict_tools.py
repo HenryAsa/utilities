@@ -20,8 +20,9 @@ def recursively_sort_dicts(dictionary: dict) -> dict:
     Returns
     -------
     dict
-        An alphabetically sorted dictionary
-    
+        An alphabetically sorted dictionary where case insensitive
+        equivalent keys are then sorted ASCII-betically
+
     Examples
     --------
 
@@ -29,18 +30,24 @@ def recursively_sort_dicts(dictionary: dict) -> dict:
     are the same, but the dictionary is still stably/repeatably
     sorted using this function.
 
-    >>> example1 = 
+    >>> example1 = {"BA": 12, "Aa": 2, "AA": 1, "aA": 3, "aa": 4, "AB": 5, "aB": 6, "AAA": 5, "aAa": {"z": 2, "A": 1}}
     >>> sorted1 = recursively_sort_dicts(example1)
-    >>> 
+    {'AA': 1, 'Aa': 2, 'aA': 3, 'aa': 4, 'AAA': 5, 'aAa': {'A': 1, 'z': 2}, 'AB': 5, 'aB': 6, 'BA': 12}
 
     Here is the same example, but with some slight differences in the
     structure of the dictionary
 
-    >>> example2 = 
+    >>> example2 = {"aa": 4, "aA": 3, "Aa": 2, "AA": 1, "AB": 5, "aB": 6, "aAa": {"z": 2, "A": 1}, "AAA": 5, "BA": 12}
     >>> sorted2 = recursively_sort_dicts(example2)
-    
+    {'AA': 1, 'Aa': 2, 'aA': 3, 'aa': 4, 'AAA': 5, 'aAa': {'A': 1, 'z': 2}, 'AB': 5, 'aB': 6, 'BA': 12}
+
     This is the last example where the dictionary to be sorted is
     already in its final/correct order
+
+    >>> example3 = {"AA": 1, "Aa": 2, "aA": 3, "aa": 4, "AAA": 5, "aAa": {"A": 1, "z": 2}, "AB": 5, "aB": 6, "BA": 12}
+    >>> sorted3 = recursively_sort_dicts(example3)
+    {'AA': 1, 'Aa': 2, 'aA': 3, 'aa': 4, 'AAA': 5, 'aAa': {'A': 1, 'z': 2}, 'AB': 5, 'aB': 6, 'BA': 12}
+
     """
     sorted_dict = {}
 
@@ -53,10 +60,3 @@ def recursively_sort_dicts(dictionary: dict) -> dict:
             sorted_dict[key] = value
 
     return sorted_dict
-
-test2 = {"BA": 12, "Aa": 2, "AA": 1, "aA": 3, "aa": 4, "AB": 5, "aB": 6, "AAA": 5, "aAa": {"z": 2, "A": 1}}
-test = {"aa": 4, "aA": 3, "Aa": 2, "AA": 1, "AB": 5, "aB": 6, "aAa": {"z": 2, "A": 1}, "AAA": 5, "BA": 12}
-correct = {"AA": 1, "Aa": 2, "aA": 3, "aa": 4, "AAA": 5, "aAa": {"A": 1, "z": 2}, "AB": 5, "aB": 6, "BA": 12}
-print(recursively_sort_dicts(test))
-print(recursively_sort_dicts(test2))
-print(recursively_sort_dicts(correct))
